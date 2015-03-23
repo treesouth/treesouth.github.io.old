@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     
+    
+    
   <url>
     <loc>https://treesouth.github.io/2014/09/07/%E4%B8%80%E6%9E%9A%E9%80%97%E6%AF%94/</loc>
     <lastmod>2015-03-22T13:19:57.000Z</lastmod>
@@ -59,6 +61,36 @@
              
               <breadCrumb title="IDE" url="https://treesouth.github.io/categories/IDE/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://treesouth.github.io/2015/03/21/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2015-03-21T09:50:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>Git常用命令整理</title>
+        <pubTime>2015-03-21T09:50:10.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://treesouth.github.io/2015/03/21/Android%E4%B8%ADProguard%E6%B7%B7%E6%B7%86%E9%85%8D%E7%BD%AE%E5%92%8C%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2015-03-21T09:47:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android中Proguard配置和总结</title>
+        <pubTime>2015-03-21T09:47:19.000Z</pubTime>
+        
+         
+           
         </display>
     </data>
     </url>
@@ -243,6 +275,4 @@
     </data>
     </url>
 
-    
-    
 </urlset>

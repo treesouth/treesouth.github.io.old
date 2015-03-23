@@ -1,6 +1,5 @@
 
-  
-    <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -9,31 +8,22 @@
   <meta name="google-site-verification" content="uj2RK-NdSBP7nGXz2AiYgZORZQh_hzWGH1p1cJd-jJc" />
 
   
-    <title>Treesouth’s Blog</title>
+    <title>Android中Proguard配置和总结 | Treesouth’s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Treesouth">
     
 
     
-    <meta name="description" content="我推荐的Github：1.Android 开源项目&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最全的android开源项目收集，没有之一
-2.Android 开源项目+分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;android开源项目分析
-3.Android 源码+设计模式&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Android源码设计模式分析项目
-4.Android 问题交流讨">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Treesouth’s Blog">
-<meta property="og:url" content="https://treesouth.github.io/index/index.html">
+    <meta name="description">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中Proguard配置和总结">
+<meta property="og:url" content="https://treesouth.github.io/2015/03/21/Android中Proguard混淆配置和总结/index.html">
 <meta property="og:site_name" content="Treesouth’s Blog">
-<meta property="og:description" content="我推荐的Github：1.Android 开源项目&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最全的android开源项目收集，没有之一
-2.Android 开源项目+分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;android开源项目分析
-3.Android 源码+设计模式&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Android源码设计模式分析项目
-4.Android 问题交流讨">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Treesouth’s Blog">
-<meta name="twitter:description" content="我推荐的Github：1.Android 开源项目&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最全的android开源项目收集，没有之一
-2.Android 开源项目+分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;android开源项目分析
-3.Android 源码+设计模式&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Android源码设计模式分析项目
-4.Android 问题交流讨">
+<meta name="twitter:title" content="Android中Proguard配置和总结">
+<meta name="twitter:description">
 <link rel="publisher" href="107157975273318493191">
 
     
@@ -49,9 +39,9 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 
-      <body>
-        <header>
-          <div>
+  <body>
+    <header>
+      <div>
 		
 			<div id="imglogo">
 				<a href="/"><img src="/img/logo.png" alt="Treesouth’s Blog" title="Treesouth’s Blog"/></a>
@@ -114,53 +104,28 @@
 				</ul>
 			</nav>			
 </div>
-        </header>
-        <div id="container">
-          <div id="main" class="page" itemscope itemprop="blogPost">
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/index/index.html" title="" itemprop="url"></a>
+      <a href="/2015/03/21/Android中Proguard混淆配置和总结/" title="Android中Proguard配置和总结" itemprop="url">Android中Proguard配置和总结</a>
   </h1>
   <p class="article-author">By
        
 		<a href="https://plus.google.com/107157975273318493191?rel=author" title="Treesouth" target="_blank" itemprop="author">Treesouth</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-23T13:48:40.000Z" itemprop="datePublished"> 发表于 2015-03-23</time>
+    <time datetime="2015-03-21T09:47:19.000Z" itemprop="datePublished"> 发表于 2015-03-21</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<h2 id="我推荐的Github：">我推荐的Github：</h2><h3 id="1-Android_开源项目">1.Android 开源项目</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/Trinea/android-open-project" target="_blank" rel="external">最全的android开源项目收集，没有之一</a></p>
-<h3 id="2-Android_开源项目+分析">2.Android 开源项目+分析</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://codekk.com/open-source-project-analysis" target="_blank" rel="external">android开源项目分析</a></p>
-<h3 id="3-Android_源码+设计模式">3.Android 源码+设计模式</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/simple-android-framework-exchange/android_design_patterns_analysis" target="_blank" rel="external">Android源码设计模式分析项目</a></p>
-<h3 id="4-Android_问题交流讨论坛">4.Android 问题交流讨论坛</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/android-cn/android-discuss/issues" target="_blank" rel="external">Android问题交流与探讨</a></p>
-<h2 id="我推荐的Blog：">我推荐的Blog：</h2><h3 id="1-Styling_Android">1.Styling Android</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/android-cn/android-discuss/issues" target="_blank" rel="external">一个国外纯技术博客讲解UI/UX</a></p>
-<h3 id="2-Android_Developers_Blog">2.Android Developers Blog</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://android-developers.blogspot.com/" target="_blank" rel="external">介绍android最新技术的博客</a></p>
-<h2 id="我推荐的订阅：">我推荐的订阅：</h2><h3 id="1-Android_Weekly">1.Android Weekly</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/android-cn/android-discuss/issues" target="_blank" rel="external">介绍android每周最新技术</a></p>
-<h3 id="2-码农周刊">2.码农周刊</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://weekly.manong.io/" target="_blank" rel="external">给程序员的纯技术干货</a></p>
-<h2 id="我使用的开发工具：">我使用的开发工具：</h2><ul>
-<li>Andoird: Android Studio / IntelliJ IDEA + Git + Zsh + Dash</li>
-<li>Python: PyCharm + Zsh</li>
-<li>iOS: Xcode + Zsh</li>
-</ul>
-<h2 id="设计工具：">设计工具：</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="http://sketchcn.com/index.html" target="_blank" rel="external">Skecth</a></strong></p>
-<ul>
-<li>Sketch 是一款适用于所有设计师的矢量绘图应用。</li>
-<li>矢量绘图也是目前进行网页，图标以及界面设计的最好方式。</li>
-<li>Sketch 容易理解并上手简单。</li>
-<li>对于绝大多数的数字产品设计，Sketch能替代Photoshop，Illustrator 和 Fireworks。</li>
-</ul>
-<h2 id="我使用的博客：">我使用的博客：</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="http://hexo.io/" target="_blank" rel="external">Hexo</a></strong></p>
-<ul>
-<li>一个快速、简洁且高效的博客框架。</li>
-<li>Nodejs开发，支持Markdowm，一键部署，拥有丰富的插件，N种主题轻松切换。</li>
-</ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<em>未完待续……</em></p>
+		<a id="more"></a>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -173,7 +138,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://treesouth.github.io/index/index.html" data-title="Treesouth’s Blog" data-tsina="null" class="share clearfix">
+	  <div data-url="https://treesouth.github.io/2015/03/21/Android中Proguard混淆配置和总结/" data-title="Android中Proguard配置和总结 | Treesouth’s Blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -184,15 +149,124 @@
    	       
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/03/21/Git常用命令整理/" title="Git常用命令整理">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Git常用命令整理</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/03/17/那些浅入深出的问答/"  title="那些浅入深出的问答">
+ <strong>下一篇：</strong><br/> 
+ <span>那些浅入深出的问答
+</span>
+</a>
+</div>
+
+</nav>
+
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="index/index.html" data-title="" data-url="https://treesouth.github.io/index/index.html"></div>
+	<div class="ds-thread" data-thread-key="2015/03/21/Android中Proguard混淆配置和总结/" data-title="Android中Proguard配置和总结" data-url="https://treesouth.github.io/2015/03/21/Android中Proguard混淆配置和总结/"></div>
 </section>
 
 
 </div>  
-        </div>
-        <footer><div id="footer" >
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Essay/" title="Essay">Essay<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/UE-UX/" title="UE/UX">UE/UX<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ZhiHu/" title="ZhiHu">ZhiHu<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a><a href="/tags/android/" style="font-size: 13.33px;">android</a><a href="/tags/game/" style="font-size: 10px;">game</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/java/" style="font-size: 10px;">java</a><a href="/tags/life/" style="font-size: 20px;">life</a><a href="/tags/topic/" style="font-size: 16.67px;">topic</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.trinea.cn/" target="_blank" title="Trinea">Trinea</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <!--自定义pm2.5 图片居中显示 需要修改config, 语言-->
+<div class="pm25">
+<p class="asidetitle">PM2.5</p>
+<div align="center">
+<script type='text/javascript' src='http://aqicn.org/?city=Zhengzhou&widgetscript&size=large&id=550d6c96281772.50577288'></script><noscript>Get the <a href='http://aqicn.org/'><b>Zhengzhou</b> Air Quality.</a> widget! Not seeing a widget? (<a href='http://aqicn.org/'>More info</a>)</noscript>
+</div>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -236,7 +310,7 @@
 		<span id="web_counter"></span><span id="page_counter"></span>
 </div>
 </footer>
-        <script src="/js/jquery-2.0.3.min.js"></script>
+    <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 
 <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
@@ -270,6 +344,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
@@ -286,6 +362,38 @@ $(document).ready(function(){
   $(window).scroll(function(){
     o.css("top",Math.max(80,260-$(this).scrollTop()));
   });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
 });
 </script>
 
@@ -396,6 +504,5 @@ var _hmt = _hmt || [];
 
 <!-- MathJax End -->
 
-      </body>
-     </html>
-     
+  </body>
+</html>

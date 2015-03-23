@@ -278,6 +278,14 @@
     </ul>
 </div>
 
+  <!--自定义pm2.5 图片居中显示 需要修改config, 语言-->
+<div class="pm25">
+<p class="asidetitle">PM2.5</p>
+<div align="center">
+<script type='text/javascript' src='http://aqicn.org/?city=Zhengzhou&widgetscript&size=large&id=550d6c96281772.50577288'></script><noscript>Get the <a href='http://aqicn.org/'><b>Zhengzhou</b> Air Quality.</a> widget! Not seeing a widget? (<a href='http://aqicn.org/'>More info</a>)</noscript>
+</div>
+</div>
+
 </aside>
 </div>
     </div>
@@ -317,15 +325,20 @@
 		
 	</div>
 		
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Treesouth">
 		
 		<a href="https://treesouth.github.io/about" target="_blank" title="Treesouth">Treesouth</a>
-		
-		</p>
+		</a> © 2015 
+
+		<span id="web_counter"></span><span id="page_counter"></span>
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
+
+<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+<script src="/firebase/firebase_count.js"></script>
+
 <script src="/js/gallery.js"></script>
 
 <script type="text/javascript">
@@ -477,6 +490,7 @@ $(document).ready(function(){
   }
 }); 
 </script>
+
 
 
 

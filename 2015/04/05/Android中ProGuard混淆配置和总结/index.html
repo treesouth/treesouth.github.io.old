@@ -1,0 +1,573 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+  <!--  google sitmap  -->
+  <meta name="google-site-verification" content="uj2RK-NdSBP7nGXz2AiYgZORZQh_hzWGH1p1cJd-jJc" />
+
+  
+    <title>Android中ProGuard配置和总结 | Treesouth’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Treesouth">
+    
+
+    
+    <meta name="description" content="ProGuard是个强大的工具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android中ProGuard配置和总结">
+<meta property="og:url" content="https://treesouth.github.io/2015/04/05/Android中ProGuard混淆配置和总结/index.html">
+<meta property="og:site_name" content="Treesouth’s Blog">
+<meta property="og:description" content="ProGuard是个强大的工具。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android中ProGuard配置和总结">
+<meta name="twitter:description" content="ProGuard是个强大的工具。">
+<link rel="publisher" href="107157975273318493191">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Treesouth’s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Treesouth’s Blog" title="Treesouth’s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Treesouth’s Blog">Treesouth’s Blog</a></h1>
+				<h2 class="blog-motto">人生只有900个月</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/index">Index</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<!-- <li>  -->
+
+					<!--
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:treesouth.github.io">
+					</form>
+					
+					-->
+
+					<!--
+					<div class="search">
+						  
+						    <form>
+						      <input id="st-search-input" type="search" placeholder="搜索">
+						    </form>
+						    <div id="st-results-container"></div>
+						  
+						</div>
+						-->
+
+					<!--swiftype搜索 默认的li不显示，右下角自带搜索区-->
+					
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+  _st('install','iXWQUiy45J-AumvRztzx');
+</script>
+
+					
+					<!-- </li> -->
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/04/05/Android中ProGuard混淆配置和总结/" title="Android中ProGuard配置和总结" itemprop="url">Android中ProGuard配置和总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/107157975273318493191?rel=author" title="Treesouth" target="_blank" itemprop="author">Treesouth</a>
+		
+  <p class="article-time">
+    <time datetime="2015-04-05T13:33:48.000Z" itemprop="datePublished"> 发表于 2015-04-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>ProGuard是个强大的工具。</p>
+<a id="more"></a>
+<p>ProGuard官方文档：<a href="http://proguard.sourceforge.net/" target="_blank" rel="external">http://proguard.sourceforge.net/</a></p>
+<h2 id="ProGuard基本介绍">ProGuard基本介绍</h2><ul>
+<li>ProGuard通过删除无用代码，将代码中类名、方法名、属性名用晦涩难懂的名称重命名从而达到代码混淆、压缩和优化的功能。</li>
+<li>压缩和优化使得编译后apk包更小。</li>
+<li>混淆可以保证代码在被反编译后很难读懂，防止逆向工程。</li>
+</ul>
+<h2 id="ProGuard的生成文件介绍">ProGuard的生成文件介绍</h2><ul>
+<li>mapping.txt —&gt; 表示混淆前后代码的对照表，这个文件非常重要。如果你的代码混淆后会产生bug的话，log提示中是混淆后的代码，希望定位到源代码的话就可以根据mapping.txt反推。每次发布都要保留它方便该版本出现问题时调出日志进行排查，它可以根据版本号或是发布时间命名来保存或是放进代码版本控制中。</li>
+<li>dump.txt —&gt; 描述apk内所有class文件的内部结构</li>
+<li>seeds.txt    —&gt; 列出了没有被混淆的类和成员</li>
+<li>usage.txt    —&gt; 列出了源代码中被删除在apk中不存在的代码</li>
+</ul>
+<h2 id="ProGuard不混淆">ProGuard不混淆</h2><ul>
+<li>反射用到的类</li>
+<li>Android中Manifest中配置的类(Activity、Service等的子类及Framework类默认不进行混淆)</li>
+<li>Jni中调用的类</li>
+<li>用到的第三方的jar包</li>
+<li>表示保留本地的bean文件下的实体类</li>
+<li>特别处理js与本地原生组件之间的调用过程</li>
+<li>自定义不混淆的类</li>
+</ul>
+<h2 id="ProGuard语法">ProGuard语法</h2><pre><code>-<span class="ruby"><span class="keyword">include</span> {filename}    从给定的文件中读取配置参数
+</span>-<span class="ruby">basedirectory {directoryname}    指定基础目录为以后相对的档案名称 
+</span>-<span class="ruby">injars {class_path}    指定要处理的应用程序jar,war,ear和目录   
+</span>-<span class="ruby">outjars {class_path}    指定处理完后要输出的jar,war,ear和目录的名称   
+</span>-<span class="ruby">libraryjars {classpath}    指定要处理的应用程序jar,war,ear和目录所需要的程序库文件   
+</span>-<span class="ruby">dontskipnonpubliclibraryclasses    指定不去忽略非公共的库类。   
+</span>-<span class="ruby">dontskipnonpubliclibraryclassmembers    指定不去忽略包可见的库类的成员。 </span>
+</code></pre><p>保留选项   </p>
+<pre><code>-<span class="ruby">keep {<span class="constant">Modifier</span>} {class_specification}    保护指定的类文件和类的成员   
+</span>-<span class="ruby">keepclassmembers {modifier} {class_specification}    保护指定类的成员，如果此类受到保护他们会保护的更好  
+</span>-<span class="ruby">keepclasseswithmembers {class_specification}    保护指定的类和类的成员，但条件是所有指定的类和类成员是要存在。   
+</span>-<span class="ruby">keepnames {class_specification}    保护指定的类和类的成员的名称（如果他们不会压缩步骤中删除）   
+</span>-<span class="ruby">keepclassmembernames {class_specification}    保护指定的类的成员的名称（如果他们不会压缩步骤中删除）   
+</span>-<span class="ruby">keepclasseswithmembernames {class_specification}    保护指定的类和类的成员的名称，如果所有指定的类成员出席（在压缩步骤之后）   
+</span>-<span class="ruby">printseeds {filename}    列出类和类的成员-keep选项的清单，标准输出到给定的文件   </span>
+</code></pre><p>压缩   </p>
+<pre><code>-<span class="ruby">dontshrink    不压缩输入的类文件   
+</span>-<span class="ruby">printusage {filename}   
+</span>-<span class="ruby">whyareyoukeeping {class_specification}       </span>
+</code></pre><p>优化   </p>
+<pre><code>-<span class="ruby">dontoptimize    不优化输入的类文件   
+</span>-<span class="ruby">assumenosideeffects {class_specification}    优化时假设指定的方法，没有任何副作用   
+</span>-<span class="ruby">allowaccessmodification    优化时允许访问并修改有修饰符的类和类的成员   </span>
+</code></pre><p>混淆   </p>
+<pre><code>-<span class="ruby">dontobfuscate    不混淆输入的类文件   
+</span>-<span class="ruby">printmapping {filename}   
+</span>-<span class="ruby">applymapping {filename}    重用映射增加混淆   
+</span>-<span class="ruby">obfuscationdictionary {filename}    使用给定文件中的关键字作为要混淆方法的名称   
+</span>-<span class="ruby">overloadaggressively    混淆时应用侵入式重载   
+</span>-<span class="ruby">useuniqueclassmembernames    确定统一的混淆类的成员名称来增加混淆   
+</span>-<span class="ruby">flattenpackagehierarchy {package_name}    重新包装所有重命名的包并放在给定的单一包中   
+</span>-<span class="ruby">repackageclass {package_name}    重新包装所有重命名的类文件中放在给定的单一包中   
+</span>-<span class="ruby">dontusemixedcaseclassnames    混淆时不会产生形形色色的类名   
+</span>-<span class="ruby">keepattributes {attribute_name,...}    保护给定的可选属性，例如<span class="constant">LineNumberTable</span>, <span class="constant">LocalVariableTable</span>, <span class="constant">SourceFile</span>, <span class="constant">Deprecated</span>, <span class="constant">Synthetic</span>, <span class="constant">Signature</span>, <span class="constant">InnerClasses</span>.   
+</span>-<span class="ruby">renamesourcefileattribute {string}    设置源文件中给定的字符串常量  </span>
+</code></pre><h2 id="ProGuard语法常见使用">ProGuard语法常见使用</h2><h3 id="不混淆某类的构造方法，需指定构造函数的参数类型">不混淆某类的构造方法，需指定构造函数的参数类型</h3><p>-keepclassmembers class com.android.treesouth.Test {<br>   public <init>(int);<br>}</init></p>
+<h3 id="不混淆某个包所有类或某个类class、某个接口interface,_不混淆指定类则把**换成类名或interface">不混淆某个包所有类或某个类class、某个接口interface, 不混淆指定类则把**换成类名或interface</h3><p>-keep class com.android.treesouth.<em>* { </em>; }</p>
+<h3 id="不混淆指某个方法，*可换成指定的方法或类名，遇到非基本数据类型要写完整包路径">不混淆指某个方法，*可换成指定的方法或类名，遇到非基本数据类型要写完整包路径</h3><p>-keepclassmembers class com.android.treesouth.Test {<br>   public boolean get(java.lang.String, android.view.View);<br>}</p>
+<h3 id="不混淆某个类的子类，某个接口的实现">不混淆某个类的子类，某个接口的实现</h3><p>-keep public class <em> extends com.ticktick.example.Test<br>-keep class </em> implementscom.ticktick.example.TestInterface {<br>    public static final com.ticktick.example.TestInterface$Creator *;<br>}</p>
+<h2 id="ProGuard实例">ProGuard实例</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;-ignorewarnings                     # &#24573;&#30053;&#35686;&#21578;&#65292;&#36991;&#20813;&#25171;&#21253;&#26102;&#26576;&#20123;&#35686;&#21578;&#20986;&#29616;  &#10;-optimizationpasses 5               # &#25351;&#23450;&#20195;&#30721;&#30340;&#21387;&#32553;&#32423;&#21035;  &#10;-dontusemixedcaseclassnames         # &#26159;&#21542;&#20351;&#29992;&#22823;&#23567;&#20889;&#28151;&#21512;  &#10;-dontskipnonpubliclibraryclasses    # &#26159;&#21542;&#28151;&#28102;&#31532;&#19977;&#26041;jar  &#10;-dontpreverify                      # &#28151;&#28102;&#26102;&#26159;&#21542;&#20570;&#39044;&#26657;&#39564;  &#10;-verbose                            # &#28151;&#28102;&#26102;&#26159;&#21542;&#35760;&#24405;&#26085;&#24535;  &#10;&#9;&#9;&#10;-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*    # &#28151;&#28102;&#26102;&#25152;&#37319;&#29992;&#30340;&#31639;&#27861;         &#10;  &#10;-libraryjars   libs/treecore.jar   #&#32570;&#30465;proguard &#20250;&#26816;&#26597;&#27599;&#19968;&#20010;&#24341;&#29992;&#26159;&#21542;&#27491;&#30830;&#65292;&#20294;&#26159;&#31532;&#19977;&#26041;&#24211;&#37324;&#38754;&#24448;&#24448;&#26377;&#20123;&#19981;&#20250;&#29992;&#21040;&#30340;&#31867;&#65292;&#27809;&#26377;&#27491;&#30830;&#24341;&#29992;&#12290;&#22914;&#26524;&#19981;&#37197;&#32622;&#30340;&#35805;&#65292;&#31995;&#32479;&#23601;&#20250;&#25253;&#38169;&#12290;&#9;&#10;-dontwarn android.support.v4.**       &#10;-dontwarn android.os.**  &#10;-keep class android.support.v4.** &#123; *; &#125;        # &#20445;&#25345;&#21738;&#20123;&#31867;&#19981;&#34987;&#28151;&#28102;  &#10;-keep class com.baidu.** &#123; *; &#125;    &#10;-keep class vi.com.gdi.bgl.android.**&#123;*;&#125;  &#10;-keep class android.os.**&#123;*;&#125;  &#10;  &#10;-keep interface android.support.v4.app.** &#123; *; &#125;    &#10;-keep public class * extends android.support.v4.**    &#10;-keep public class * extends android.app.Fragment  &#10;  &#10;-keep public class * extends android.app.Activity  &#10;-keep public class * extends android.app.Application  &#10;-keep public class * extends android.app.Service  &#10;-keep public class * extends android.content.BroadcastReceiver  &#10;-keep public class * extends android.content.ContentProvider  &#10;-keep public class * extends android.support.v4.widget  &#10;-keep public class * extends com.sqlcrypt.database  &#10;-keep public class * extends com.sqlcrypt.database.sqlite  &#10;-keep public class * extends com.treecore.**  &#10;-keep public class * extends de.greenrobot.dao.**  &#10;  &#10;-keepclasseswithmembernames class * &#123;     # &#20445;&#25345; native &#26041;&#27861;&#19981;&#34987;&#28151;&#28102;  &#10;    native &#60;methods&#62;;  &#10;&#125;  &#10;  &#10;-keepclasseswithmembers class * &#123;         # &#20445;&#25345;&#33258;&#23450;&#20041;&#25511;&#20214;&#31867;&#19981;&#34987;&#28151;&#28102;  &#10;    public &#60;init&#62;(android.content.Context, android.util.AttributeSet);  &#10;&#125;  &#10;  &#10;-keepclasseswithmembers class * &#123;         # &#20445;&#25345;&#33258;&#23450;&#20041;&#25511;&#20214;&#31867;&#19981;&#34987;&#28151;&#28102;  &#10;    public &#60;init&#62;(android.content.Context, android.util.AttributeSet, int);  &#10;&#125;  &#10;  &#10;-keepclassmembers class * extends android.app.Activity &#123; #&#20445;&#25345;&#31867;&#25104;&#21592;  &#10;   public void *(android.view.View);  &#10;&#125;  &#10;  &#10;-keepclassmembers enum * &#123;                  # &#20445;&#25345;&#26522;&#20030; enum &#31867;&#19981;&#34987;&#28151;&#28102;  &#10;    public static **[] values();  &#10;    public static ** valueOf(java.lang.String);  &#10;&#125;  &#10;  &#10;-keep class * implements android.os.Parcelable &#123;    # &#20445;&#25345;Parcelable&#19981;&#34987;&#28151;&#28102;  &#10;  public static final android.os.Parcelable$Creator *;  &#10;&#125;  &#10;  &#10;-keep class MyClass;                              # &#20445;&#25345;&#33258;&#24049;&#23450;&#20041;&#30340;&#31867;&#19981;&#34987;&#28151;&#28102;</span><br></pre></td></tr></table></figure>
+<h2 id="ProGuard解决Bug">ProGuard解决Bug</h2><p>常见问题及解决：<a href="http://proguard.sourceforge.net/index.html#manual/troubleshooting.html" target="_blank" rel="external">http://proguard.sourceforge.net/index.html#manual/troubleshooting.html</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android/">Android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/proguard/">proguard</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://treesouth.github.io/2015/04/05/Android中ProGuard混淆配置和总结/" data-title="Android中ProGuard配置和总结 | Treesouth’s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/03/22/一个成功的Git分支模型/"  title="一个成功的Git分支模型">
+ <strong>下一篇：</strong><br/> 
+ <span>一个成功的Git分支模型
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/04/05/Android中ProGuard混淆配置和总结/" data-title="Android中ProGuard配置和总结" data-url="https://treesouth.github.io/2015/04/05/Android中ProGuard混淆配置和总结/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ProGuard基本介绍"><span class="toc-number">1.</span> <span class="toc-text">ProGuard基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProGuard的生成文件介绍"><span class="toc-number">2.</span> <span class="toc-text">ProGuard的生成文件介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProGuard不混淆"><span class="toc-number">3.</span> <span class="toc-text">ProGuard不混淆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProGuard语法"><span class="toc-number">4.</span> <span class="toc-text">ProGuard语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProGuard语法常见使用"><span class="toc-number">5.</span> <span class="toc-text">ProGuard语法常见使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#不混淆某类的构造方法，需指定构造函数的参数类型"><span class="toc-number">5.1.</span> <span class="toc-text">不混淆某类的构造方法，需指定构造函数的参数类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不混淆某个包所有类或某个类class、某个接口interface,_不混淆指定类则把**换成类名或interface"><span class="toc-number">5.2.</span> <span class="toc-text">不混淆某个包所有类或某个类class、某个接口interface, 不混淆指定类则把**换成类名或interface</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不混淆指某个方法，*可换成指定的方法或类名，遇到非基本数据类型要写完整包路径"><span class="toc-number">5.3.</span> <span class="toc-text">不混淆指某个方法，*可换成指定的方法或类名，遇到非基本数据类型要写完整包路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不混淆某个类的子类，某个接口的实现"><span class="toc-number">5.4.</span> <span class="toc-text">不混淆某个类的子类，某个接口的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProGuard实例"><span class="toc-number">6.</span> <span class="toc-text">ProGuard实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ProGuard解决Bug"><span class="toc-number">7.</span> <span class="toc-text">ProGuard解决Bug</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Essay/" title="Essay">Essay<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/UE-UX/" title="UE/UX">UE/UX<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ZhiHu/" title="ZhiHu">ZhiHu<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a><a href="/tags/android/" style="font-size: 13.33px;">android</a><a href="/tags/game/" style="font-size: 10px;">game</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/java/" style="font-size: 10px;">java</a><a href="/tags/life/" style="font-size: 20px;">life</a><a href="/tags/proguard/" style="font-size: 10px;">proguard</a><a href="/tags/topic/" style="font-size: 16.67px;">topic</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.trinea.cn/" target="_blank" title="Trinea">Trinea</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <!--自定义pm2.5 图片居中显示 需要修改config, 语言-->
+<div class="pm25">
+<p class="asidetitle">PM2.5</p>
+<div align="center">
+<script type='text/javascript' src='http://aqicn.org/?city=Zhengzhou&widgetscript&size=large&id=550d6c96281772.50577288'></script><noscript>Get the <a href='http://aqicn.org/'><b>Zhengzhou</b> Air Quality.</a> widget! Not seeing a widget? (<a href='http://aqicn.org/'>More info</a>)</noscript>
+</div>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m Treesouth. <br/>
+			A Full-stack engineer in the future.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/treesouth" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/3967834" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		
+		
+		<a href="https://www.zhihu.com/people/balmy-zn" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/107157975273318493191?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:zntreesouth@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Treesouth">
+		
+		<a href="https://treesouth.github.io/about" target="_blank" title="Treesouth">Treesouth</a>
+		</a> © 2015 
+
+		<span id="web_counter"></span><span id="page_counter"></span>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+<script src="/firebase/firebase_count.js"></script>
+
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"treesouth"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?29a6443488bdd6d2cbd8fca49e0318ff";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>

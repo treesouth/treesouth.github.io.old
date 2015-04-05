@@ -2,6 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     
+  <url>
+    <loc>https://treesouth.github.io/2015/04/05/Android%E4%B8%ADProGuard%E6%B7%B7%E6%B7%86%E9%85%8D%E7%BD%AE%E5%92%8C%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2015-04-05T13:44:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android中ProGuard配置和总结</title>
+        <pubTime>2015-04-05T13:33:48.000Z</pubTime>
+        
+        <tag>proguard </tag>
+         
+         
+           
+             
+              <breadCrumb title="Android" url="https://treesouth.github.io/categories/Android/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
     
   <url>
@@ -73,21 +93,6 @@
         <display>
         <title>Git常用命令整理</title>
         <pubTime>2015-03-21T09:50:10.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://treesouth.github.io/2015/03/21/Android%E4%B8%ADProguard%E6%B7%B7%E6%B7%86%E9%85%8D%E7%BD%AE%E5%92%8C%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2015-03-21T09:47:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Android中Proguard配置和总结</title>
-        <pubTime>2015-03-21T09:47:19.000Z</pubTime>
         
          
            

@@ -1,0 +1,553 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+  <!--  google sitmap  -->
+  <meta name="google-site-verification" content="uj2RK-NdSBP7nGXz2AiYgZORZQh_hzWGH1p1cJd-jJc" />
+
+  
+    <title>工具类与函数编程毫不相干 | Treesouth’s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Treesouth">
+    
+
+    
+    <meta name="description" content="伯乐在线地址：http://www.importnew.com/15747.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工具类与函数编程毫不相干">
+<meta property="og:url" content="https://treesouth.github.io/2015/04/18/工具类与函数编程毫不相干/index.html">
+<meta property="og:site_name" content="Treesouth’s Blog">
+<meta property="og:description" content="伯乐在线地址：http://www.importnew.com/15747.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工具类与函数编程毫不相干">
+<meta name="twitter:description" content="伯乐在线地址：http://www.importnew.com/15747.html">
+<link rel="publisher" href="107157975273318493191">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Treesouth’s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Treesouth’s Blog" title="Treesouth’s Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Treesouth’s Blog">Treesouth’s Blog</a></h1>
+				<h2 class="blog-motto">人生只有900个月</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/index">Index</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<!-- <li>  -->
+
+					<!--
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:treesouth.github.io">
+					</form>
+					
+					-->
+
+					<!--
+					<div class="search">
+						  
+						    <form>
+						      <input id="st-search-input" type="search" placeholder="搜索">
+						    </form>
+						    <div id="st-results-container"></div>
+						  
+						</div>
+						-->
+
+					<!--swiftype搜索 默认的li不显示，右下角自带搜索区-->
+					
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+  _st('install','iXWQUiy45J-AumvRztzx');
+</script>
+
+					
+					<!-- </li> -->
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/04/18/工具类与函数编程毫不相干/" title="工具类与函数编程毫不相干" itemprop="url">工具类与函数编程毫不相干</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/107157975273318493191?rel=author" title="Treesouth" target="_blank" itemprop="author">Treesouth</a>
+		
+  <p class="article-time">
+    <time datetime="2015-04-18T13:16:41.000Z" itemprop="datePublished"> 发表于 2015-04-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>伯乐在线地址：<a href="http://www.importnew.com/15747.html" target="_blank" rel="external">http://www.importnew.com/15747.html</a><br><a id="more"></a></p>
+<p>原文链接：<a href="http://www.yegor256.com/2015/02/20/utility-classes-vs-functional-programming.html" target="_blank" rel="external">http://www.yegor256.com/2015/02/20/utility-classes-vs-functional-programming.html</a></p>
+<h2 id="工具类与函数编程毫不相干">工具类与函数编程毫不相干</h2><p>最近，由于我把工具类看作反模式，所以被指责反对函数式编程。这是绝对错误的！我认为它们是很糟糕的反模式，因为他们与函数式编程无关。我认为其中有两个基本原因。首先，函数式编程是可声明的，然而工具类方法是命令式的。第二，函数式编程是基于lambda演算，即被传递参数的函数。从这个意义上来说，工具类方法不是函数。我会用一点时间来解释一下。</p>
+<p>在Java中，基本上有两种被Guava、Apache Commons和其它开发库推荐使用的拙劣的工具类。第一种是使用传统的类，第二种就是Java 8的lambda。现在让我们看看为什么工具类和函数式编程关系不大，以及错误观念的来源。</p>
+<p>这就是来源于Java 1.0中Math工具类的一个典型示例：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Math</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">abs</span><span class="params">(<span class="keyword">double</span> a)</span></span>;</span><br><span class="line">  <span class="comment">// a few dozens of other methods of the same style</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当你想要计算一个浮点型数字的绝对值，你可以使用如下方式：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> x = Math.<span class="built_in">abs</span>(<span class="number">3.1415926</span>d);</span><br></pre></td></tr></table></figure>
+<p>这里有什么问题呢？我们需要一个函数，并且我们从Math类中得到了结果。这个类有许多有用的内置函数，可以用于许多典型的数学运算，比如计算最大值、最小值、正弦、余弦等。这是一个非常流行的概念，许多商业化或者开源产品也是如此。自从Java出现（Math类在Java首个版本被引入），这些工具类就被广泛使用。当然，在技术上没有什么不妥。相反，他们是命令式和过程式的。我们是否在意呢？这取决于你的选择。让我们来看看他们有什么区别。</p>
+<p>基本上有两种不同的选择，声明式和命令式</p>
+<p>就改变程序状态的声明来说，命令式编程的重点是描述一个程序是如何运作的。我们刚刚看到了上面一个命令式编程的例子。下面是另一个（这是一个和面向对象无关，纯粹的命令式并且程序化的代码）：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> class MyMath &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">double</span> f(<span class="keyword">double</span> a, <span class="keyword">double</span> b) &#123;</span><br><span class="line">    <span class="keyword">double</span> <span class="built_in">max</span> = Math.<span class="built_in">max</span>(a, b);</span><br><span class="line">    <span class="keyword">double</span> x = Math.<span class="built_in">abs</span>(<span class="built_in">max</span>);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就采取的一系列举措来说，声明式编程侧重于在没有规定如何做的情况下程序应该完成哪些事情。就像是Lisp中的代码，一种函数式编程语言。</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> f <span class="list">(<span class="keyword">a</span> b)</span> <span class="list">(<span class="keyword"><span class="built_in">abs</span></span> <span class="list">(<span class="keyword"><span class="built_in">max</span></span> a b)</span>)</span>)</span></span><br></pre></td></tr></table></figure>
+<p>我们明白了什么？只是句法的不同？不是这样的。</p>
+<p>在命令式和声明式之间有很多的描述差异，但是我尽量给出自己的理解。基本上有三种角色在使用f函数的场景下相互影响：买家、包装者和消费者，让我们谈一谈下面的调用：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">double</span> x = <span class="keyword">this</span>.calc(<span class="number">5</span>, -<span class="number">7</span>);</span><br><span class="line">  System.<span class="keyword">out</span>.println(<span class="string">"max+abs equals to "</span> + x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">double</span> <span class="title">calc</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">double</span> x = Math.f(a, b);</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个例子中，方法calc()是一个买家，方法Math.f()是结果的包装者，方法foo()是消费者。无论使用哪种编程风格，总是有这三个参与其中，买家、包装者，和消费者。</p>
+<p>想象一下，你是一个买家并希望购买礼物给你的女朋友或男朋友。首先会想到进一家店铺，消费50美元，让别人喷上香水打包给你，然后寄给你的朋友（回报是一枚香吻），这是命令式的风格。</p>
+<p>第二个选项是进一家店铺，消费50美元，并得到一张礼品券，你将此券展示给你的朋友（回报是一枚香吻）。当他或者她想要得到这股芳香，他或她就会进这家店来得到它。这就是声明式风格。</p>
+<p>看到什么区别了么？</p>
+<p>在第一个场景中，这是命令式的风格，你要求包装者（一家店铺）使用库存中的香水来打包，并作为准备好的礼品呈现给你。在第二个场景中，这是声明式的，你最终得到了店铺的承诺，当必要的时候店铺职员会找到香水来打包礼物，并提供给需要的人。如果你的朋友从来没有进过有礼品券的这家店，这股芳香将一直留在这家店中。</p>
+<p>此外，你的朋友可以用这个礼品券当做这个礼品本身，就不用去这家店。他或她可能会将这张券作为礼物给其他人，或者用来交换其它礼券或者礼品。这个礼品券本身成为了一个礼品。</p>
+<p>因此，区别就是消费者得到了什么，是用来当做礼品（命令式）还是之后可以转换成真实礼品的礼券（声明式）。</p>
+<p>工具类，就像从JDK中的Math类或者Apache Commons中的StringUtils类中立刻得到了准备好的礼品。然而，从Lisp中的函数和其它函数式编程中，却得到了“礼券”。比如，如果你想调用Lisp中的求最大值的方法，但只有当你真正开始使用的时候才能计算出来。</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword"><span class="built_in">let</span></span> <span class="list">(<span class="keyword">x</span> <span class="list">(<span class="keyword"><span class="built_in">max</span></span> <span class="number">1</span> <span class="number">5</span>)</span>)</span></span><br><span class="line">  <span class="list">(<span class="keyword">print</span> <span class="string">"X equals to "</span> x)</span>)</span></span><br></pre></td></tr></table></figure>
+<p>直到输出结果打印到屏幕上，求最大值的函数才会调用。当你尝试去“购买”1到5之间最大值的时候，这个x就是一个返回给你的“礼券”。</p>
+<p>但是请注意，嵌套的Java静态函不会让他们可声明化，代码仍然是命令式的，因为此时方法进行了传值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> MyMath &#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">f</span><span class="params">(<span class="keyword">double</span> a, <span class="keyword">double</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Math.<span class="built_in">abs</span>(Math.max(a, b));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你可能会说，“好吧，我明白了。但是为什么声明式的风格比命令式的更好呢？有什么大不了的呢？”我会慢慢解释的。首先让我来展示在面向对象中函数式编程中的函数和静态方法的区别。正如上面所提到的，这是工具类和函数式编程之间第二大的区别。</p>
+<p>在函数式变成语言中，你可以这么做：</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">defun</span> foo <span class="list">(<span class="keyword">x</span>)</span> <span class="list">(<span class="keyword">x</span> <span class="number">5</span>)</span>)</span></span><br></pre></td></tr></table></figure>
+<p>然后，你可以调用这个x：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">(defun bar (x)</span> <span class="comment">(+ x 1)</span>) <span class="comment">// defining function bar</span></span><br><span class="line"><span class="comment">(print (foo bar)</span>) <span class="comment">// passing bar as an argument to foo</span></span><br></pre></td></tr></table></figure>
+<p>就函数式编程而言，Java中的静态方法不是函数。你不能用一个静态方法做这样的事。你不能将一个静态方法当做参数传递给其他方法。基本上静态方法是生产者，或者简单地说，Java由唯一的名字所声明。唯一的方法就是调用一个程序并且传递所有必要的参数给它。这个程序将会计算出结果并立即返回给调用者。</p>
+<p>现在，我们来到了最终的问题上，我能听到你在问：“好吧，工具类不是函数式编程，但是他们看起来很像函数式编程，他们运行的很快，并且使用很方便。为什么不用他们？为什么当20年的Java历史证明了工具类是每一个Java开发者的主要手段的时候，又要力求完美？”</p>
+<p>除了面向对象的，这点我经常受指责，这里有一些实际的原因（顺便说一句，我推崇面向对象）。</p>
+<p>可测试性。在工具类中调用静态方法是硬编码式的依赖，它不能因为测试的需要而被打断。如果你的类正在调用FileUtils.readFile()，除非我的磁盘上有一个实际的文件，否则我无法测试。</p>
+<p>效率。工具类，由于其命令式的性质，比可替代的声明式更加低效。即使当他们不是必要使用的时候，他们也盲目地进行所有的计算，处理资源。而不是返回一个期望值来分隔字符串chunks、StringUtils.split()可以立即打断它。同时，这也打破了所有可能的chunks，即使“买家”仅仅需要第一个。</p>
+<p>最后，我要重申一下：工具类与函数编程无关。他们仅仅是静态方法的包装，是命令式的程序。无论你要声明他们多少次，他们有多渺小，都要尽量远离他们而去使用可靠、健壮的对象。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Jobbole/">Jobbole</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/java/">java</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://treesouth.github.io/2015/04/18/工具类与函数编程毫不相干/" data-title="工具类与函数编程毫不相干 | Treesouth’s Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/04/05/Android中ProGuard混淆配置和总结/"  title="Android中ProGuard配置和总结">
+ <strong>下一篇：</strong><br/> 
+ <span>Android中ProGuard配置和总结
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/04/18/工具类与函数编程毫不相干/" data-title="工具类与函数编程毫不相干" data-url="https://treesouth.github.io/2015/04/18/工具类与函数编程毫不相干/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#工具类与函数编程毫不相干"><span class="toc-number">1.</span> <span class="toc-text">工具类与函数编程毫不相干</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Design-Pattern/" title="Design Pattern">Design Pattern<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Essay/" title="Essay">Essay<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Jobbole/" title="Jobbole">Jobbole<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tools/" title="Tools">Tools<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/UE-UX/" title="UE/UX">UE/UX<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ZhiHu/" title="ZhiHu">ZhiHu<sup>4</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a><a href="/tags/android/" style="font-size: 13.33px;">android</a><a href="/tags/game/" style="font-size: 10px;">game</a><a href="/tags/git/" style="font-size: 10px;">git</a><a href="/tags/java/" style="font-size: 13.33px;">java</a><a href="/tags/life/" style="font-size: 20px;">life</a><a href="/tags/proguard/" style="font-size: 10px;">proguard</a><a href="/tags/topic/" style="font-size: 16.67px;">topic</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.trinea.cn/" target="_blank" title="Trinea">Trinea</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <!--自定义pm2.5 图片居中显示 需要修改config, 语言-->
+<div class="pm25">
+<p class="asidetitle">PM2.5</p>
+<div align="center">
+<script type='text/javascript' src='http://aqicn.org/?city=Zhengzhou&widgetscript&size=large&id=550d6c96281772.50577288'></script><noscript>Get the <a href='http://aqicn.org/'><b>Zhengzhou</b> Air Quality.</a> widget! Not seeing a widget? (<a href='http://aqicn.org/'>More info</a>)</noscript>
+</div>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello, I&#39;m Treesouth. <br/>
+			A Full-stack engineer in the future.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/treesouth" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/3967834" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		
+		
+		<a href="https://www.zhihu.com/people/balmy-zn" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/107157975273318493191?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:zntreesouth@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Treesouth">
+		
+		<a href="https://treesouth.github.io/about" target="_blank" title="Treesouth">Treesouth</a>
+		</a> © 2015 
+
+		<span id="web_counter"></span><span id="page_counter"></span>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+<script src="/firebase/firebase_count.js"></script>
+
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"treesouth"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?29a6443488bdd6d2cbd8fca49e0318ff";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+</html>
